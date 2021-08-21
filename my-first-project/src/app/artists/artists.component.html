@@ -1,0 +1,21 @@
+
+<div class="row">
+  <div class="col-md-6 list-group overflow-auto" >
+    <button type="button" class="btn btn-primary" (click)="onNavigate()">Create New Artist</button>
+        <input type="text" class="form-control"  placeholder="{{'SEARCH.PLACEHOLDER' | translate}}" [(ngModel)]="searchedKeyword">
+    <a  routerLinkActive="router-link-active"
+       *ngFor="let artist of artists | filter:searchedKeyword;let i = index;" 
+       class="list-group-item list-group-item-action">
+    <app-artist  [artist]="artist" [index] ="i" (click)="sendArtist(artist)" ></app-artist>
+    </a> 
+    </div> 
+      <div class="col-md-6"> 
+		<router-outlet></router-outlet>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6"> 
+    <a href="#" class="previous" disabled="isPrev" (click)="getprev()">&laquo; Previous</a>
+    <a href="#" class="next" disabled="isNext" (click)="getnext()">Next &raquo;</a> 
+	</div>
+</div>
