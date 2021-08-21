@@ -1,0 +1,45 @@
+<div class="container" *ngIf="!isEditMode; else edit">
+	<div class="row">
+		<div class="col-md-12">
+		<h2>{{ artist?.name }}</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+		<abbr>{{ artist?.age }}</abbr>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+		<i>{{ artist?.catchphrase }}</i>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+		<i>{{ artist?.description }}</i>
+		</div>
+	</div>
+	<button type="button" class="btn btn-primary" (click)="onEdit(artist)">Edit</button>
+	<button type="button" class="btn btn-primary" (click)="onDelete(artist)">Delete</button>
+
+</div>
+
+<ng-template #edit>
+<div class="row">
+		<i>Name : </i>
+		<input type="text" class="form-control" [(ngModel)]="artist.name" />
+	</div>
+	<div class="row">
+		<i>Age : </i>
+		<input type="number" class="form-control" [(ngModel)]="artist.age" />
+	</div>
+	<div class="row">
+		<i>Catchphrase : </i>
+		<input type="text" class="form-control" [(ngModel)]="artist.catchphrase" />
+	</div>
+	<div class="row">
+		<i>Description : </i>
+		<input type="text" class="form-control" [(ngModel)]="artist.description" />
+	</div> 
+	<button type="button" class="btn btn-primary" (click)="onUpdate(artist)">Update</button>
+</ng-template>
