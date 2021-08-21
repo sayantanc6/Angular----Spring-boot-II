@@ -1,0 +1,27 @@
+<div class="contaner">
+	<form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+	 <div class="form-group">
+        <label for="name">Artist Name</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="artist.name" #name="ngModel" required>
+        <div class="alert alert-danger" [hidden]="name.valid || name.pristine">Name is required</div>
+     </div>
+	 <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" class="form-control" name="age" min="0" max="100" [(ngModel)]="artist.age" #age="ngModel"  required>
+        <div class="alert alert-danger" [hidden]="age.valid || age.pristine">Age is required</div>
+		<div class="alert alert-danger" *ngIf="age.errors?.min">Minimum required number is 0</div>	
+		<div class="alert alert-danger" *ngIf="age.errors?.max">Maximum number can be 100</div>
+     </div>
+	 <div class="form-group">
+        <label for="catchphrase">Catchphrase</label>
+        <input type="text" class="form-control" name="catchphrase" [(ngModel)]="artist.catchphrase" #catchphrase="ngModel" required>
+        <div class="alert alert-danger" [hidden]="catchphrase.valid || catchphrase.pristine">Catchphrase is required</div>
+     </div>
+	 <div class="form-group">
+        <label for="description">Description</label>
+        <input type="textarea" class="form-control" name="description" [(ngModel)]="artist.description" #description="ngModel" required>
+        <div class="alert alert-danger" [hidden]="description.valid || description.pristine">Description is required</div>
+     </div>
+	<button type="submit" class="btn btn-primary" [disabled]="!f.valid" (click)="Create(f)">Create Artist</button>
+	</form>
+</div>
